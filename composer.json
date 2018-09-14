@@ -1,0 +1,9 @@
+{
+    "name": "testZoho",
+    "license": "BSD",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {
+    "components/jquery": "*"
+    }
+}

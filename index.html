@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test zoho</title>
+	<script src="\vendor\components\jquery\jquery.min.js"></script>
+</head>
+<body>
+	<form id="contact" action="" name="contact">
+		<input type="text" name="First_Name" required placeholder="Имя" />
+		<input type="text" name="Phone" required placeholder="Телефон" />
+		<input type="text" name="Email" required placeholder="Email" />
+		<input type="text" name="Last_Name" required placeholder="Фамилия" />
+		<input type="text" name="Company" required placeholder="Компания" />
+		<input type="submit">
+	</form>
+	<div class="response"></div>
+</body>
+
+<script>
+$(document).ready(function() {
+	$("form").on("submit", function(event) {
+		event.preventDefault();
+		var data = $(this).serialize();
+		var url = "ajax.php";
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: data,
+			dataType: 'json',
+			success: function(result) {
+				console.log(result);
+				console.log(result.message);
+				$('.response').html(result.message);
+				$('form')[0].reset();
+			},
+			error: function (jqXHR, exception) {
+				console.log(jqXHR);	
+				console.log(exception);					
+			}
+      });
+	});
+});
+</script>
+</html>
